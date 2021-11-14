@@ -1,31 +1,45 @@
-import React, { useState } from 'react';
-import Link from 'next/link';
+import React, { useState } from "react";
+
+import siteMetadata from "../../data/siteMetadata";
+import headerNavigationLinks from "../../data/headerNavigationLinks";
+import Link from "../Link/Link"
+import MobileNav from "../MobileNavigation/MobileNav";
+
 
 function Navbar() {
-
-    return (
+  return (
+    <div>
+      <header className="flex items-center justify-between py-10">
         <div>
-            <nav className="h-80px flex justify-between items-center p-7">
-                <div>
-                    <Link href='/' passHref>
-                        <a>Sambulo senda</a>
-                    </Link>
+          <Link href="/" aria-label="Tailwind CSS Blog">
+            <div className="flex items-center justify-between">
+              {typeof siteMetadata.headerTitle === "string" ? (
+                <div className="hidden h-6 text-2xl font-semibold sm:block">
+                  {siteMetadata.headerTitle}
                 </div>
-                <div>
-                    <Link href='/' passHref>
-                        <a className="p-3">Home</a>
-                    </Link>
-                    <Link href='/about' passHref>
-                        <a className="p-3">About</a>
-                    </Link>
-                    <Link href='/contact' passHref>
-                        <a className="p-3">Contact</a>
-                    </Link>
-                </div>
-            </nav>
-
+              ) : (
+                siteMetadata.headerTitle
+              )}
+            </div>
+          </Link>
         </div>
-    )
-}
+        <div className="flex items-center text-base leading-5">
+          <div className="hidden sm:block">
+            {headerNavigationLinks.map((link) => (
+              <Link
+                key={link.title}
+                href={link.href}
+                className="p-1 font-medium text-gray-900 sm:p-4 dark:text-gray-100"
 
-export default Navbar
+              >
+                {link.title}
+              </Link>
+            ))}
+          </div>
+        <MobileNav />
+        </div>
+      </header>
+    </div>
+  );
+}
+export default Navbar;
