@@ -21,11 +21,8 @@ function Blog(props) {
 export const getServerSideProps = async context => {
 
     const fs = require("fs");
-
     const {blog} = context.params;
-
     const content = fs.readFileSync(`${process.cwd()}/content/${blog}.md`, 'utf8')
-
     return {
         props: {
             content
