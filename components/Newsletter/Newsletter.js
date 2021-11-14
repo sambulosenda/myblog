@@ -1,28 +1,27 @@
-import { useRef, useState } from 'react'
+import { useRef, useState } from "react";
 
-const NewsletterForm = ({ title = 'Subscribe to the newsletter' }) => {
-  const inputEl = useRef(null)
-  const [error, setError] = useState(false)
-  const [message, setMessage] = useState('')
-  const [subscribed, setSubscribed] = useState(false)
+const NewsletterForm = ({ title = "Subscribe to the newsletter" }) => {
+  const inputEl = useRef(null);
+  const [error, setError] = useState(false);
+  const [message, setMessage] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
 
   const subscribe = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-
-    const { error } = await res.json()
+    const { error } = await res.json();
     if (error) {
-      console.log(error)
-      setError(true)
-      setMessage(error)
-      return
+      console.log(error);
+      setError(true);
+      setMessage(error);
+      return;
     }
 
-    inputEl.current.value = ''
-    setError(false)
-    setSubscribed(true)
-    setMessage('Successfully! 🎉 You are now subscribed.')
-  }
+    inputEl.current.value = "";
+    setError(false);
+    setSubscribed(true);
+    setMessage("Successfully! 🎉 You are now subscribed.");
+  };
 
   return (
     <div>
@@ -39,7 +38,9 @@ const NewsletterForm = ({ title = 'Subscribe to the newsletter' }) => {
             className="px-4 rounded-md w-72 dark:bg-black focus:outline-none focus:ring-2 focus:border-transparent focus:ring-primary-600"
             id="email-input"
             name="email"
-            placeholder={subscribed ? "You're subscribed !  🎉" : 'Enter your email'}
+            placeholder={
+              subscribed ? "You're subscribed !  🎉" : "Enter your email"
+            }
             ref={inputEl}
             required
             type="email"
@@ -49,21 +50,27 @@ const NewsletterForm = ({ title = 'Subscribe to the newsletter' }) => {
         <div className="mt-2 rounded-md shadow-sm">
           <button
             className={`py-2 w-72 bg-primary-500 px-4 rounded-md font-medium text-black ${
-              subscribed ? 'cursor-default' : 'hover:bg-primary-700 dark:hover:bg-primary-400'
+              subscribed
+                ? "cursor-default"
+                : "hover:bg-primary-700 dark:hover:bg-primary-400"
             } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-600 dark:ring-offset-black`}
             type="submit"
             disabled={subscribed}
           >
-            {subscribed ? 'Thank you!' : 'Sign up'}
+            {subscribed ? "Thank you!" : "Sign up"}
           </button>
         </div>
       </form>
-      {error && <div className="pt-2 text-sm text-red-500 w-72 dark:text-red-400">{message}</div>}
+      {error && (
+        <div className="pt-2 text-sm text-red-500 w-72 dark:text-red-400">
+          {message}
+        </div>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default NewsletterForm
+export default NewsletterForm;
 
 export const BlogNewsletterForm = ({ title }) => (
   <div className="flex items-center justify-center">
@@ -71,4 +78,4 @@ export const BlogNewsletterForm = ({ title }) => (
       <NewsletterForm title={title} />
     </div>
   </div>
-)
+);

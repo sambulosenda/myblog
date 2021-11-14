@@ -2,9 +2,8 @@ import React, { useState } from "react";
 
 import siteMetadata from "../../data/siteMetadata";
 import headerNavigationLinks from "../../data/headerNavigationLinks";
-import Link from "../Link/Link"
+import Link from "../Link/Link";
 import MobileNav from "../MobileNavigation/MobileNav";
-
 
 function Navbar() {
   return (
@@ -30,13 +29,12 @@ function Navbar() {
                 key={link.title}
                 href={link.href}
                 className="p-1 font-medium text-gray-900 sm:p-4 dark:text-gray-100"
-
               >
                 {link.title}
               </Link>
             ))}
           </div>
-        <MobileNav />
+          <MobileNav />
         </div>
       </header>
     </div>

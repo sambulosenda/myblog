@@ -1,7 +1,7 @@
 ---
 slug: vue-vs-react
 title: Vue vs React
-description: "Vue vs React in 2021: Which Framework to Choose and When"
+description: "Vue.js and React.js are two frontend JavaScript frameworks popular in the developer world, with React taking the top spot on the podium for three consecutive years now. Both tools offer developers a productive approach to building various Web applications"
 img: https://www.monterail.com/hubfs/vuevsreact.jpg
 date: 06 August 2020
 ---
