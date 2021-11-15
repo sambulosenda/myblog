@@ -11,8 +11,9 @@ function Banner() {
             Hi, I’m Sambulo
           </h1>
           <h2 className="text-lg prose text-gray-600 dark:text-gray-400">
-            {`Welcome to my blog - . I am the co-founder of Cylynx, a data
-            scientist by profession and economist by training. In my free time, I like developing `}
+            {`I do software development for fun and profit.
+ - . I do software development for fun and profit.
+`}
             <Link href="/projects">side projects</Link>
             {" and "}
             <Link href="/blog">blogging</Link>

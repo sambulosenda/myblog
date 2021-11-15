@@ -4,6 +4,7 @@ import siteMetadata from "../../data/siteMetadata";
 import headerNavigationLinks from "../../data/headerNavigationLinks";
 import Link from "../Link/Link";
 import MobileNav from "../MobileNavigation/MobileNav";
+import ThemeSwitch from "../ThemeSwitch/ThemeSwitch";
 
 function Navbar() {
   return (
@@ -34,7 +35,8 @@ function Navbar() {
               </Link>
             ))}
           </div>
-          <MobileNav />
+         
+          <ThemeSwitch /> <MobileNav />
         </div>
       </header>
     </div>

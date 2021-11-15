@@ -1,20 +1,114 @@
 ---
-
 slug: wordpress-the-good-the-bad
 title: "WordPress: The good and the bad"
 description: We love a lot of things about WordPress. It has so many time-saving features that it makes a lot of the heavy lifting of web development much lighter.
 img: https://www.hotdesign.com/wp-content/uploads/wordpress-good-bad.png
 date: 24 June 2020
 ---
+# A demo of `react-markdown`
 
-![Tailwind](https://www.hotdesign.com/wp-content/uploads/wordpress-good-bad.png )
+`react-mearkdown` is a markdown component for React.
 
----
+👉 Changes are re-rendered as you type.
 
-We love a lot of things about WordPress. It has so many time-saving features that it makes a lot of the heavy lifting of web development much lighter. Still, it does have its foibles and isn’t a universal, one-size-fits-all solution. Having created many sites using WordPress as a content management system, we’ve learned that there are some good reasons to use WordPress to create your website, and some good reasons you might want to use another solution.
+👈 Try writing some markdown on the left.
 
-# Cost: Free
+## Overview
 
-**Good:** You don’t have to spend thousands of dollars on some proprietary solution that nobody has ever heard of. If you’re really on a shoestring, you can even have your site hosted for free on wordpress.com. (For another $100/year, you can have more customization options and not have ads served on your site.)
+* Follows [CommonMark](https://commonmark.org)
+* Optionally follows [GitHub Flavored Markdown](https://github.github.com/gfm/)
+* Renders actual React elements instead of using `dangerouslySetInnerHTML`
+* Lets you define your own components (to render `MyHeading` instead of `h1`)
+* Has a lot of plugins
 
-**Bad:** You can’t argue with Free!
+## Table of contents
+
+Here is an example of a plugin in action
+([`remark-toc`](https://github.com/remarkjs/remark-toc)).
+This section is replaced by an actual table of contents.
+
+## Syntax highlighting
+
+Here is an example of a plugin to highlight code:
+[`rehype-highlight`](https://github.com/rehypejs/rehype-highlight).
+
+```js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import ReactMarkdown from 'react-markdown'
+import rehypeHighlight from 'rehype-highlight'
+
+ReactDOM.render(
+  <ReactMarkdown rehypePlugins={[rehypeHighlight]}>{'# Your markdown here'}</ReactMarkdown>,
+  document.querySelector('#content')
+)
+```
+
+Pretty neat, eh?
+
+## GitHub flavored markdown (GFM)
+
+For GFM, you can *also* use a plugin:
+[`remark-gfm`](https://github.com/remarkjs/react-markdown#use).
+It adds support for GitHub-specific extensions to the language:
+tables, strikethrough, tasklists, and literal URLs.
+
+These features **do not work by default**.
+👆 Use the toggle above to add the plugin.
+
+| Feature    | Support              |
+| ---------: | :------------------- |
+| CommonMark | 100%                 |
+| GFM        | 100% w/ `remark-gfm` |
+
+~~strikethrough~~
+
+* [ ] task list
+* [x] checked item
+
+https://example.com
+
+## HTML in markdown
+
+⚠️ HTML in markdown is quite unsafe, but if you want to support it, you can
+use [`rehype-raw`](https://github.com/rehypejs/rehype-raw).
+You should probably combine it with
+[`rehype-sanitize`](https://github.com/rehypejs/rehype-sanitize).
+
+<blockquote>
+  👆 Use the toggle above to add the plugin.
+</blockquote>
+
+## Components
+
+You can pass components to change things:
+
+```js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import ReactMarkdown from 'react-markdown'
+import MyFancyRule from './components/my-fancy-rule.js'
+
+ReactDOM.render(
+  <ReactMarkdown
+    components={{
+      // Use h2s instead of h1s
+      h1: 'h2',
+      // Use a component instead of hrs
+      hr: ({node, ...props}) => <MyFancyRule {...props} />
+    }}
+  >
+    # Your markdown heredwdw
+  </ReactMarkdown>,
+  document.querySelector('#content')
+)
+```
+
+## More info?
+
+Much more info is available in the
+[readme on GitHub](https://github.com/remarkjs/react-markdown)!
+
+***
+
+A component by [Espen Hovlandsdal](https://espen.codes/)
