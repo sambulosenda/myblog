@@ -2,8 +2,7 @@ import React from "react";
 import Link from "next/link";
 
 function BlogPost({ blog }) {
-  const MAX_DESCRIPTION_LENGTH = 150;
-
+  const MAX_DESCRIPTION_LENGTH = 100;
   return (
     <Link href={`/posts/${blog.slug}`}>
       <div className="flex flex-col rounded-lg shadow-lg overflow-hidden">

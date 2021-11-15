@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import siteMetadata from "../../data/siteMetadata";
 import headerNavigationLinks from "../../data/headerNavigationLinks";
 import Link from "../Link/Link";
@@ -35,8 +34,9 @@ function Navbar() {
               </Link>
             ))}
           </div>
-         
-          <ThemeSwitch /> <MobileNav />
+          <ThemeSwitch />
+          <MobileNav />
+          <MobileNav />
         </div>
       </header>
     </div>
