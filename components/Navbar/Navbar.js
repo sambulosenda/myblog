@@ -36,7 +36,6 @@ function Navbar() {
           </div>
           <ThemeSwitch />
           <MobileNav />
-          <MobileNav />
         </div>
       </header>
     </div>
